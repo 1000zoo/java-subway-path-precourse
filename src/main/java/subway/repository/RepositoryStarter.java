@@ -1,6 +1,8 @@
 package subway.repository;
 
 import java.util.List;
+import subway.domain.Relationship;
+import subway.domain.RelationshipRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -9,6 +11,7 @@ public class RepositoryStarter {
     private final List<String> stationNames = List.of(
             "교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역"
     );
+
     private final List<List<String>> lineInformation = List.of(
             List.of("교대역", "강남역", "2", "3"),
             List.of("강남역", "역삼역", "2", "3"),    //2호선
@@ -23,7 +26,7 @@ public class RepositoryStarter {
 
     public RepositoryStarter() {
         createStationRepository();
-        createLineRepository();
+        createRelationshipRepository();
     }
 
     private void createStationRepository() {
@@ -34,6 +37,12 @@ public class RepositoryStarter {
     }
 
     private void createLineRepository() {
+    }
 
+    private void createRelationshipRepository() {
+        for (List<String> information : lineInformation) {
+            Relationship relationship = Relationship.from(information);
+            RelationshipRepository.addRelationship(relationship);
+        }
     }
 }
