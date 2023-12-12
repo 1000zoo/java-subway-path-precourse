@@ -1,7 +1,6 @@
 plugins {
     id 'java'
 }
-
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -15,7 +14,11 @@ dependencies {
     testImplementation('org.assertj:assertj-core:3.18.1')
     testImplementation('org.mockito:mockito-inline:3.6.0')
 }
-
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 test {
     useJUnitPlatform()
 }
