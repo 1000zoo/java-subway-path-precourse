@@ -10,7 +10,7 @@ class RepositoryStarterTest {
 
     @BeforeEach
     void setUp() {
-        RepositoryStarter repositoryStarter = new RepositoryStarter();
+        RepositoryStarter.init();
     }
 
     @Test

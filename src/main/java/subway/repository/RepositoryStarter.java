@@ -8,11 +8,13 @@ import subway.domain.StationRepository;
 
 public class RepositoryStarter {
 
-    private final List<String> stationNames = List.of(
+    private static boolean init = false;
+
+    private final static List<String> stationNames = List.of(
             "교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역"
     );
 
-    private final List<List<String>> lineInformation = List.of(
+    private final static List<List<String>> lineInformation = List.of(
             List.of("교대역", "강남역", "2", "3"),
             List.of("강남역", "역삼역", "2", "3"),    //2호선
 
@@ -24,22 +26,29 @@ public class RepositoryStarter {
             List.of("양재역", "양재시민의숲역", "10", "3")    //신분당선
     );
 
-    public RepositoryStarter() {
+    private RepositoryStarter() {
+    }
+
+    public static void init() {
+        if (init) {
+            return;
+        }
+        init = true;
         createStationRepository();
         createRelationshipRepository();
     }
 
-    private void createStationRepository() {
+    private static void createStationRepository() {
         for (String name : stationNames) {
             Station station = new Station(name);
             StationRepository.addStation(station);
         }
     }
 
-    private void createLineRepository() {
+    private static void createLineRepository() {
     }
 
-    private void createRelationshipRepository() {
+    private static void createRelationshipRepository() {
         for (List<String> information : lineInformation) {
             Relationship relationship = Relationship.from(information);
             RelationshipRepository.addRelationship(relationship);
