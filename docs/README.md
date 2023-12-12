@@ -25,11 +25,11 @@
 
 ### 그 외 요구사항
 
-- [ ] Station, Line 클래스를 활용하여 지하철역과 노선을 구현
-- [ ] StationRepository, LineRepository 클래스를 활용하여 Repository 구현
+- [X] Station, Line 클래스를 활용하여 지하철역과 노선을 구현
+- [X] StationRepository, LineRepository 클래스를 활용하여 Repository 구현
     - 메서드 수정은 불가하나, 추가는 가능하다.
     - 추가적인 Repository class 는 XXXRepository 로 네이밍
-- [ ] jgrapht 라이브러리를 활용하여 최단거리를 구한다.
+- [X] jgrapht 라이브러리를 활용하여 최단거리를 구한다.
 
 ---
 
@@ -37,14 +37,14 @@
 
 ### repository
 
-- [ ] 초기 설정대로 Repository를 구성한다.
-    - [ ] 지하철역 정보를 StationRepository 에 저장한다.
-    - [ ] 노선 정보를 LineRepository 에 저장한다.
+- [X] 초기 설정대로 Repository를 구성한다.
+    - [X] 지하철역 정보를 StationRepository 에 저장한다.
+    - [X] 노선 정보를 LineRepository 에 저장한다.
 
 ### domain
 
 - Line
-    - [ ] List<Station>, 혹은 graph 구조 추가
+    - [X] List, 혹은 graph 구조 추가
 - StationRepository
     - [X] 이름으로 Station 찾기
 
@@ -66,3 +66,4 @@
 ### service
 
 - [ ] 경로 계산 로직을 구현
+- [X] 최단거리, 최단시간 경로 불러오는 로직 구현

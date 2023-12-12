@@ -23,6 +23,14 @@ public class SubwayGraph {
         setMinuteGraph();
     }
 
+    public WeightedMultigraph<Station, DefaultWeightedEdge> getDistanceGraph() {
+        return distanceGraph;
+    }
+
+    public WeightedMultigraph<Station, DefaultWeightedEdge> getMinuteGraph() {
+        return minuteGraph;
+    }
+
     private void setGraph() {
         for (Station station : StationRepository.stations()) {
             distanceGraph.addVertex(station);
