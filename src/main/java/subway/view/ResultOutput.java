@@ -27,4 +27,10 @@ public class ResultOutput {
         print(String.format(TOTAL_TIME, time));
     }
 
+    public static void printResult(int distance, int time) {
+        printLine();
+        printDistance(distance);
+        printTime(time);
+        printLine();
+    }
 }

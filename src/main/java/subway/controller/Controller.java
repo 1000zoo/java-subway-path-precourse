@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 import subway.constance.InstructionMessages;
 import subway.domain.Station;
+import subway.service.PathCalculator;
 import subway.service.PathFinder;
 import subway.service.SubwayGraph;
 import subway.view.Output;
+import subway.view.ResultOutput;
 import subway.view.input.Input;
 import subway.view.input.MainInput;
 import subway.view.input.SelectInput;
@@ -61,7 +63,9 @@ public class Controller {
     private void distancePath() {
         StationInput input = new StationInput(scanner);
         try {
+            Output.print(InstructionMessages.FROM_INSTRUCTION.getMessage());
             Station from = input.read();
+            Output.print(InstructionMessages.TO_INSTRUCTION.getMessage());
             Station to = input.read();
             printResult(finder.findShortestDistancePath(from, to));
         } catch (IllegalArgumentException exception) {
@@ -73,7 +77,9 @@ public class Controller {
     private void minutePath() {
         StationInput input = new StationInput(scanner);
         try {
+            Output.print(InstructionMessages.FROM_INSTRUCTION.getMessage());
             Station from = input.read();
+            Output.print(InstructionMessages.TO_INSTRUCTION.getMessage());
             Station to = input.read();
             printResult(finder.findShortestMinutePath(from, to));
         } catch (IllegalArgumentException exception) {
@@ -83,6 +89,16 @@ public class Controller {
     }
 
     private void printResult(List<Station> stations) {
+        PathCalculator pathCalculator = new PathCalculator(stations);
+        int distance = pathCalculator.getTotalDistance();
+        int time = pathCalculator.getTotalMinute();
+        ResultOutput.printResult(distance, time);
+        printStationsName(stations);
+    }
 
+    private void printStationsName(List<Station> stations) {
+        for (Station station : stations) {
+            ResultOutput.printStation(station.getName());
+        }
     }
 }
