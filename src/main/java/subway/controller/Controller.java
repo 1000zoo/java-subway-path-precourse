@@ -6,6 +6,7 @@ import subway.service.SubwayGraph;
 import subway.view.Output;
 import subway.view.input.Input;
 import subway.view.input.MainInput;
+import subway.view.input.SelectInput;
 
 public class Controller {
 
@@ -18,18 +19,44 @@ public class Controller {
     }
 
     public void start() {
+        Input<Boolean> input = new MainInput(scanner);
         Output.print(InstructionMessages.MAIN_INSTRUCTION.getMessage());
         Output.print(InstructionMessages.SELECT_MESSAGE.getMessage());
-        while (true) {
-            Input<Boolean> input = new MainInput(scanner);
-            if (!input.read()) {
-                break;
+        try {
+            if (input.read()) {
+                selectPath();
+                start();
             }
-            selectPath();
+        } catch (IllegalArgumentException exception) {
+            Output.print(exception.getMessage());
+            start();
         }
     }
 
     public void selectPath() {
-        System.out.println("!!!!");
+        Input<Integer> input = new SelectInput(scanner);
+        Output.print(InstructionMessages.STANDARD_INSTRUCTION.getMessage());
+        Output.print(InstructionMessages.SELECT_MESSAGE.getMessage());
+        try {
+            int menu = input.read();
+            if (menu == 1) {
+                distancePath();
+                return;
+            }
+            if (menu == 2) {
+                minutePath();
+                return;
+            }
+            start();
+        } catch (IllegalArgumentException exception) {
+            Output.print(exception.getMessage());
+            selectPath();
+        }
+    }
+
+    private void distancePath() {
+    }
+
+    private void minutePath() {
     }
 }

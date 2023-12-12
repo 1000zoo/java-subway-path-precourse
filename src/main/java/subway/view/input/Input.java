@@ -1,7 +1,6 @@
 package subway.view.input;
 
 import java.util.Scanner;
-import subway.view.Output;
 
 public abstract class Input<O> {
 
@@ -17,8 +16,7 @@ public abstract class Input<O> {
             validate(input);
             return transfer(input);
         } catch (IllegalArgumentException exception) {
-            Output.print(exception.getMessage());
-            return read();
+            throw new IllegalArgumentException(exception.getMessage());
         }
     }
 
