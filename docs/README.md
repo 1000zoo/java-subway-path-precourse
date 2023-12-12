@@ -18,21 +18,21 @@
 - [ ] `[INFO]`를 붙여서 출력
 
 ### 예외
+
 - [ ] 출발역 == 도착역
 - [ ] 출발역과 도착역이 연결되어있지 않을 시 에러
 - [ ] 그 외의 경우
 - [ ] `[ERROR]`를 붙여서 출력
 
 ### 그 외 요구사항
+
 - [ ] Station, Line 클래스를 활용하여 지하철역과 노선을 구현
 - [ ] StationRepository, LineRepository 클래스를 활용하여 Repository 구현
     - 메서드 수정은 불가하나, 추가는 가능하다.
     - 추가적인 Repository class 는 XXXRepository 로 네이밍
 - [ ] jgrapht 라이브러리를 활용하여 최단거리를 구한다.
 
-
 ---
-
 
 # 구현
 
@@ -42,20 +42,28 @@
     - [ ] 지하철역 정보를 StationRepository 에 저장한다.
     - [ ] 노선 정보를 LineRepository 에 저장한다.
 
+### domain
+
+- Line
+    - [ ] List<Station>, 혹은 graph 구조 추가
+- StationRepository
+    - [X] 이름으로 Station 찾기
 
 ### view
 
 #### Input
+
 - [ ] 기능을 선택한다. (조회, 종료)
 - [ ] 경로 기준을 선택한다. (최단 거리, 최소 시간, 돌아가기)
 - [ ] 출발역, 도착역을 입력한다.
 
 #### Output
+
 - [ ] 안내 메시지를 출력한다.
 - [ ] 조회 결과를 출력한다.
     - 총 거리, 총 시간, 경로상의 모든 역
 - [ ] 에러 문구를 출력한다.
 
-
 ### service
+
 - [ ] 경로 계산 로직을 구현
