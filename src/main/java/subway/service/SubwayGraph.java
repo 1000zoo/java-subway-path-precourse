@@ -49,7 +49,7 @@ public class SubwayGraph {
     private void setMinuteGraph() {
         for (Relationship relationship : RelationshipRepository.relationships()) {
             List<Station> stations = relationship.stations();
-            distanceGraph.setEdgeWeight(distanceGraph.addEdge(stations.get(0), stations.get(1)),
+            minuteGraph.setEdgeWeight(minuteGraph.addEdge(stations.get(0), stations.get(1)),
                     relationship.getMinute());
         }
 

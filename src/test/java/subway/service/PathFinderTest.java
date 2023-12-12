@@ -49,7 +49,7 @@ class PathFinderTest {
         Station from = new Station(fromName);
         Station to = new Station(toName);
 
-        List<Station> list = pathFinder.findShortestDistancePath(from, to);
+        List<Station> list = pathFinder.findShortestMinutePath(from, to);
         assertThat(list.size()).isEqualTo(answer);
     }
 }
