@@ -1,21 +1,25 @@
 package subway.controller;
 
+import java.util.List;
 import java.util.Scanner;
 import subway.constance.InstructionMessages;
+import subway.domain.Station;
+import subway.service.PathFinder;
 import subway.service.SubwayGraph;
 import subway.view.Output;
 import subway.view.input.Input;
 import subway.view.input.MainInput;
 import subway.view.input.SelectInput;
+import subway.view.input.StationInput;
 
 public class Controller {
 
     private final Scanner scanner;
-    private final SubwayGraph graph;
+    private final PathFinder finder;
 
     public Controller(Scanner scanner) {
         this.scanner = scanner;
-        this.graph = new SubwayGraph();
+        this.finder = new PathFinder(new SubwayGraph());
     }
 
     public void start() {
@@ -55,8 +59,30 @@ public class Controller {
     }
 
     private void distancePath() {
+        StationInput input = new StationInput(scanner);
+        try {
+            Station from = input.read();
+            Station to = input.read();
+            printResult(finder.findShortestDistancePath(from, to));
+        } catch (IllegalArgumentException exception) {
+            Output.print(exception.getMessage());
+            selectPath();
+        }
     }
 
     private void minutePath() {
+        StationInput input = new StationInput(scanner);
+        try {
+            Station from = input.read();
+            Station to = input.read();
+            printResult(finder.findShortestMinutePath(from, to));
+        } catch (IllegalArgumentException exception) {
+            Output.print(exception.getMessage());
+            selectPath();
+        }
+    }
+
+    private void printResult(List<Station> stations) {
+
     }
 }
