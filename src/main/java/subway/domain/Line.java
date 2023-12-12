@@ -1,6 +1,7 @@
 package subway.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Line {
@@ -20,5 +21,9 @@ public class Line {
     public void addStation(String stationName) {
         Station station = StationRepository.findByName(stationName);
         stations.add(station);
+    }
+
+    public List<Station> stations() {
+        return Collections.unmodifiableList(stations);
     }
 }

@@ -1,5 +1,6 @@
 package subway.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,6 +32,10 @@ public class Relationship {
 
     public boolean containsBoth(Station station1, Station station2) {
         return stationSet.contains(station1) && stationSet.contains(station2);
+    }
+
+    public List<Station> stations() {
+        return new ArrayList<>(stationSet);
     }
 
     public int getDistance() {

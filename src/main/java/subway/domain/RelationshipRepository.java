@@ -1,6 +1,7 @@
 package subway.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RelationshipRepository {
@@ -13,6 +14,10 @@ public class RelationshipRepository {
 
     public static void deleteAll() {
         relationships.clear();
+    }
+
+    public static List<Relationship> relationships() {
+        return Collections.unmodifiableList(relationships);
     }
 
     public static int getDistanceBetween(Station station1, Station station2) {
