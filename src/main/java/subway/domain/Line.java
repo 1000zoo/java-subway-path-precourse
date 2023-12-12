@@ -1,6 +1,12 @@
 package subway.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Line {
+
+    private final List<Station> stations = new ArrayList<>();
+
     private String name;
 
     public Line(String name) {
@@ -11,5 +17,8 @@ public class Line {
         return name;
     }
 
-    // 추가 기능 구현
+    public void addStation(String stationName) {
+        Station station = StationRepository.findByName(stationName);
+        stations.add(station);
+    }
 }
